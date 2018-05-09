@@ -4,8 +4,6 @@ Considering at least 3 public datasets, design and implement minimum 5 different
 
 Deliverables:
 
-- a technical report – available in Scholarly HTML format; the content will be equivalent to a document of 12—14 standard A4 pages;
-
-- a public GitHub repository of the original source-code examples available under an open source license;
-
+- a technical report – available in Scholarly HTML format; the content will be equivalent to a document of 12—14 standard A4 pages
+- a public GitHub repository of the original source-code examples available under an open source license
 - a public Website providing the interactive demos for all data visualization solutions.
