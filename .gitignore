@@ -342,7 +342,7 @@ xcuserdata/
 /*.gcno
 
 ### Added by me ###
-Datasets/IMDB/title.akas.tsv
+Datasets/IMDB/*.tsv
 
 
 # End of https://www.gitignore.io/api/c,c++,xcode,macos,python,visualstudiocode
