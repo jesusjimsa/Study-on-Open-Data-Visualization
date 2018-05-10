@@ -67,3 +67,5 @@ books_per_language_file.write("Language, Times\n")
 
 for elem in books_per_language:
 	books_per_language_file.write(str(elem) + ", " + str(books_per_language[elem]) + "\n")
+
+books_per_language_file.close()
