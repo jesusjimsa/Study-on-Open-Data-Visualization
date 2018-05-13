@@ -9,7 +9,7 @@ try:
 	books_per_language_file = open("../../Filtering/Gutenberg/books_per_language.json", "w+")
 	books_cronological_file = open("../../Filtering/Gutenberg/books_cronological.json", "w+")
 	books_per_author_file = open("../../Filtering/Gutenberg/books_per_author.json", "w+")
-	words_per_frecuency_file = open("../../Filtering/Gutenberg/words_per_frecuency.json", "w+")
+	words_per_frequency_file = open("../../Filtering/Gutenberg/words_per_frequency.json", "w+")
 	biographical_vs_nonbiog_file = open("../../Filtering/Gutenberg/biographical_vs_nonbiog.json", "w+")
 except IOError:
 	print "Could not open file"
@@ -91,19 +91,19 @@ json.dump(books_per_author, books_per_author_file, indent = 4)
 books_per_author_file.close()
 
 ## Word ordered by frequency in titles ##
-words_per_frecuency = dict()
+words_per_frequency = dict()
 
 for single_book in books:
 	for word in single_book.split():
-		words_per_frecuency[word] = 0
+		words_per_frequency[word] = 0
 
 for single_book in books:
 	for word in single_book.split():
-		words_per_frecuency[word] += 1
+		words_per_frequency[word] += 1
 
-json.dump(words_per_frecuency, words_per_frecuency_file, indent = 4)
+json.dump(words_per_frequency, words_per_frequency_file, indent = 4)
 
-words_per_frecuency_file.close()
+words_per_frequency_file.close()
 
 ## Biographical vs non-biographical ##
 biographical_vs_nonbiog = dict()
