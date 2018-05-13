@@ -64,7 +64,7 @@ for line in titles_basics_file:
 			if genre != "\\N":	
 				title_genres[title] = genre.split(",")
 			else:
-				title_genres[title] = "unknown"
+				title_genres[title] = ["unknown"]
 
 titles_basics_file.close()
 
@@ -121,6 +121,8 @@ titles_per_year = dict()
 
 for elem in years:
 	titles_per_year[elem] = 0
+
+titles_per_year["unknown"] = 0
 
 for elem in title_year:
 	titles_per_year[title_year[elem]] += 1
