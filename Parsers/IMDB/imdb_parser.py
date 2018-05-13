@@ -43,18 +43,28 @@ for line in titles_basics_file:
 			types.add(type)
 			years.add(year)
 			
-			for elem in genre.split(","):
-				genres.add(elem)
+			if genre != "\\N":
+				for elem in genre.split(","):
+					genres.add(elem)
+			else:
+				genres.add("unknown")
 
 			title_type[title] = type
-			title_year[title] = year
+			
+			if year != "\\N":
+				title_year[title] = year
+			else:
+				title_year[title] = "unknown"
 
 			if length != "\\N":
 				title_length[title] = length
 			else:
 				title_length[title] = ""
 			
-			title_genres[title] = genre.split(",")
+			if genre != "\\N":	
+				title_genres[title] = genre.split(",")
+			else:
+				title_genres[title] = "unknown"
 
 titles_basics_file.close()
 
