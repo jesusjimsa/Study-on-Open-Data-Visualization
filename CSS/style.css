@@ -1,0 +1,37 @@
+body {
+	font-family: "Helvetica Neue", Times, serif;
+	background: #f7f7f7;
+	color: black;
+}
+
+h1{
+	font-size: 53.33px;
+	text-align: center;
+}
+
+h2{
+	font-size: 40px;
+}
+
+h3{
+	font-size: 30px;
+}
+
+h4{
+	font-size: 22.5px;
+}
+
+p{
+	font-size: 12.66px;
+}
+
+.logos{
+	
+}
+
+.logos img{
+	width: 400px;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
