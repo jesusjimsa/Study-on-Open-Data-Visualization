@@ -4,6 +4,25 @@ body {
 	color: black;
 }
 
+body > section, article {
+	padding: 0 10px;
+	margin: 0 auto 120px auto;
+	max-width: 900px;
+}
+
+article {
+	padding: 0px 88px 490px 108px;
+	background: #fff;
+	border-top: 5px solid transparent;
+	border-right: 28px solid transparent;
+	border-bottom: 8px solid transparent;
+	border-left: 4px solid transparent;
+	font-size: 16.875px;
+	font-weight: 300;
+	-moz-hyphens: auto;
+	hyphens: auto;
+}
+
 h1{
 	font-size: 53.33px;
 	text-align: center;
@@ -25,14 +44,13 @@ p{
 	font-size: 12.66px;
 }
 
-.logos{
-
-}
-
 .logos img{
 	width: 100%;
-	max-width: 400px;
+	max-width: 280px;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	float: left;
+	padding-left: 10px;
+	padding-right: 10px;
 }
