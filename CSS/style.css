@@ -54,3 +54,10 @@ p{
 	padding-left: 10px;
 	padding-right: 10px;
 }
+
+.num_books_language{
+	width: 100%;
+	height: 700px;
+	margin-left:auto;
+	margin-right:auto;
+}

@@ -6,7 +6,7 @@ import json
 
 try:
 	gutenberg_file = open("../../Datasets/Gutenberg/GUTINDEX.ALL.txt", "r")
-	books_per_language_file = open("../../Filtering/Gutenberg/books_per_language.json", "w+")
+	books_per_language_file = open("../../Filtering/Gutenberg/books_per_language.csv", "w+")
 	books_cronological_file = open("../../Filtering/Gutenberg/books_cronological.json", "w+")
 	books_per_author_file = open("../../Filtering/Gutenberg/books_per_author.json", "w+")
 	words_per_frequency_file = open("../../Filtering/Gutenberg/words_per_frequency.json", "w+")
@@ -68,7 +68,11 @@ for elem in languages:
 # The Language of the eBooks is English, unless otherwise noted
 books_per_language["English"] = len(books) - len(languages)
 
-json.dump(books_per_language, books_per_language_file, indent = 4)
+books_per_language_file.write("Language,Num_books\n")
+for key in books_per_language:
+	books_per_language_file.write(str(key) + "," + str(books_per_language[key]) + "\n")
+
+# json.dump(books_per_language, books_per_language_file, indent = 4)
 
 books_per_language_file.close()
 

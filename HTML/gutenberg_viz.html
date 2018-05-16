@@ -7,13 +7,40 @@
 	<title>Gutenberg Data Visualization</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" media="screen" href="../CSS/style.css" />
-	<script src=""></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<script src="../Javascript/gutenberg_num_books.js"></script>
 </head>
 
 <body>
 	<article>
 		<h1>Gutenberg Data Visualization</h1>
+		<section>
+			<h2>Books per language</h2>
+			<div class="num_books_language">
+				<div class="chart-example" id="chart">
+					<svg></svg>
+				</div>
+
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.6.0/d3.min.js"></script>
+				<script src="../Javascript/gutenberg_num_books.js"></script>
+
+				<script>
+					d3.csv('../Filtering/Gutenberg/books_per_language.csv', function (error, data) {
+						if (error) {
+							console.error('Error getting or parsing the data.');
+							throw error;
+						}
+						// selection.datum() returns the bound datum for the first element in the selection and 
+						//  doesn't join the specified array of data with the selected elements
+						var chart = bubbleChart().width(900).height(500);
+						d3.select('#chart').datum(data).call(chart);
+					});
+				</script>
+			</div>
+		</section>
 	</article>
 </body>
+
 
 </html>
