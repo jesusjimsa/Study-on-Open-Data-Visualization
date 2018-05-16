@@ -343,6 +343,7 @@ xcuserdata/
 
 ### Added by me ###
 Datasets/IMDB/*.tsv
+*.numbers
 
 
 # End of https://www.gitignore.io/api/c,c++,xcode,macos,python,visualstudiocode
