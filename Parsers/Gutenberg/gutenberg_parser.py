@@ -8,8 +8,8 @@ try:
 	gutenberg_file = open("../../Datasets/Gutenberg/GUTINDEX.ALL.txt", "r")
 	books_per_language_file = open("../../Filtering/Gutenberg/books_per_language.csv", "w+")
 	books_cronological_file = open("../../Filtering/Gutenberg/books_cronological.json", "w+")
-	books_per_author_file = open("../../Filtering/Gutenberg/books_per_author.json", "w+")
-	words_per_frequency_file = open("../../Filtering/Gutenberg/words_per_frequency.json", "w+")
+	books_per_author_file = open("../../Filtering/Gutenberg/books_per_author.csv", "w+")
+	words_per_frequency_file = open("../../Filtering/Gutenberg/words_per_frequency.csv", "w+")
 	biographical_vs_nonbiog_file = open("../../Filtering/Gutenberg/biographical_vs_nonbiog.json", "w+")
 except IOError:
 	print "Could not open file"
@@ -69,6 +69,7 @@ for elem in languages:
 books_per_language["English"] = len(books) - len(languages)
 
 books_per_language_file.write("Language,Num_books\n")
+
 for key in books_per_language:
 	books_per_language_file.write(str(key) + "," + str(books_per_language[key]) + "\n")
 
@@ -90,7 +91,13 @@ for elem in authors:
 for elem in authors:
 	books_per_author[authors[elem]] += 1
 
-json.dump(books_per_author, books_per_author_file, indent = 4)
+# json.dump(books_per_author, books_per_author_file, indent = 4)
+books_per_author_file.write("Author,Num_books\n")
+
+for key in books_per_author:
+	# We will ignore authors with less than ten books
+	if int(books_per_author[key]) > 80 and key != "Various":
+		books_per_author_file.write(str(key) + "," + str(books_per_author[key]) + "\n")
 
 books_per_author_file.close()
 
@@ -99,13 +106,25 @@ words_per_frequency = dict()
 
 for single_book in books:
 	for word in single_book.split():
-		words_per_frequency[word] = 0
+		if word[-1] == ',':
+			word = word[0:len(word) - 1]
+
+		words_per_frequency[word.lower()] = 0
 
 for single_book in books:
 	for word in single_book.split():
-		words_per_frequency[word] += 1
+		if word[-1] == ',':
+			word = word[0:len(word) - 1]
 
-json.dump(words_per_frequency, words_per_frequency_file, indent = 4)
+		words_per_frequency[word.lower()] += 1
+
+# json.dump(words_per_frequency, words_per_frequency_file, indent = 4)
+words_per_frequency_file.write("Word,Frequency\n")
+
+for key in words_per_frequency:
+	# We will ignore words with less than five hundred ocurrences
+	if int(words_per_frequency[key]) > 500:
+		words_per_frequency_file.write(str(key) + "," + str(words_per_frequency[key]) + "\n")
 
 words_per_frequency_file.close()
 
