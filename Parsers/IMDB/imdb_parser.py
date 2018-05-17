@@ -6,11 +6,11 @@ import json
 
 try:
 	titles_basics_file = open("../../Datasets/IMDB/title.basics.tsv", "r")
-	titles_per_length = open("../../Filtering/IMDB/title_length.json", "w+")
-	types_per_frequency_file = open("../../Filtering/IMDB/types_per_frequency.json", "w+")
-	words_per_frequency_file = open("../../Filtering/IMDB/words_per_frequency.json", "w+")
-	genres_per_frequency_file = open("../../Filtering/IMDB/genres_per_frequency.json", "w+")
-	titles_per_year_file = open("../../Filtering/IMDB/titles_per_year.json", "w+")
+	titles_per_length_file = open("../../Filtering/IMDB/title_length.csv", "w+")
+	types_per_frequency_file = open("../../Filtering/IMDB/types_per_frequency.csv", "w+")
+	words_per_frequency_file = open("../../Filtering/IMDB/words_per_frequency.csv", "w+")
+	genres_per_frequency_file = open("../../Filtering/IMDB/genres_per_frequency.csv", "w+")
+	titles_per_year_file = open("../../Filtering/IMDB/titles_per_year.csv", "w+")
 except IOError as e:
 	print "Could not open file -> ", e
 	sys.exit()
@@ -70,9 +70,14 @@ titles_basics_file.close()
 
 #### Filtering ####
 ## Titles length ##
-json.dump(title_length, titles_per_length, indent = 4)
+# json.dump(title_length, titles_per_length_file, indent = 4)
 
-titles_per_length.close()
+titles_per_length_file.write("Title,Length (in minutes)\n")
+
+for key in title_length:
+	titles_per_length_file.write(str(key) + "," + str(title_length[key]) + "\n")
+
+titles_per_length_file.close()
 
 ## Types per frequency ##
 types_per_frequency = dict()
@@ -83,7 +88,12 @@ for elem in types:
 for elem in title_type:
 	types_per_frequency[title_type[elem]] += 1
 
-json.dump(types_per_frequency, types_per_frequency_file, indent = 4)
+# json.dump(types_per_frequency, types_per_frequency_file, indent = 4)
+
+types_per_frequency_file.write("Genre,Num_films\n")
+
+for key in types_per_frequency:
+	types_per_frequency_file.write(str(key) + "," + str(types_per_frequency[key]) + "\n")
 
 types_per_frequency_file.close()
 
@@ -98,7 +108,12 @@ for single_title in titles:
 	for word in single_title.split():
 		words_per_frequency[word] += 1
 
-json.dump(words_per_frequency, words_per_frequency_file, indent = 4)
+# json.dump(words_per_frequency, words_per_frequency_file, indent = 4)
+
+words_per_frequency_file.write("Word,Num_ocurrences\n")
+
+for key in words_per_frequency:
+	words_per_frequency_file.write(str(key) + "," + str(words_per_frequency[key]) + "\n")
 
 words_per_frequency_file.close()
 
@@ -112,11 +127,16 @@ for elem in title_genres:
 	for genre in title_genres[elem]:
 		genres_per_frequency[genre] += 1
 
-json.dump(genres_per_frequency, genres_per_frequency_file, indent = 4)
+# json.dump(genres_per_frequency, genres_per_frequency_file, indent = 4)
+
+genres_per_frequency_file.write("Film,Genre\n")
+
+for key in genres_per_frequency:
+	genres_per_frequency_file.write(str(key) + "," + str(genres_per_frequency[key]) + "\n")
 
 genres_per_frequency_file.close()
 
-## Title year ##
+## Titles year ##
 titles_per_year = dict()
 
 for elem in years:
@@ -127,6 +147,11 @@ titles_per_year["unknown"] = 0
 for elem in title_year:
 	titles_per_year[title_year[elem]] += 1
 
-json.dump(titles_per_year, titles_per_year_file, indent = 4)
+# json.dump(titles_per_year, titles_per_year_file, indent = 4)
+
+titles_per_year_file.write("Year,Num_films\n")
+
+for key in titles_per_year:
+	titles_per_year_file.write(str(key) + "," + str(titles_per_year[key]) + "\n")
 
 titles_per_year_file.close()
