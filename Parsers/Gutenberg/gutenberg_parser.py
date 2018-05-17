@@ -10,7 +10,7 @@ try:
 	books_cronological_file = open("../../Filtering/Gutenberg/books_cronological.json", "w+")
 	books_per_author_file = open("../../Filtering/Gutenberg/books_per_author.csv", "w+")
 	words_per_frequency_file = open("../../Filtering/Gutenberg/words_per_frequency.csv", "w+")
-	biographical_vs_nonbiog_file = open("../../Filtering/Gutenberg/biographical_vs_nonbiog.json", "w+")
+	biographical_vs_nonbiog_file = open("../../Filtering/Gutenberg/biographical_vs_nonbiog.csv", "w+")
 except IOError:
 	print "Could not open file"
 	sys.exit()
@@ -138,9 +138,13 @@ for single_book in books:
 	for word in single_book.split():
 		if word.lower() == "biography" or word.lower() == "autobiography" or word.lower() == "biographical" or word.lower() == "autobiographical":
 			biographical_vs_nonbiog["biographical"] += 1
-		else:
-			biographical_vs_nonbiog["non_biographical"] += 1
 
-json.dump(biographical_vs_nonbiog, biographical_vs_nonbiog_file, indent = 4)
+# 57100 is the total number of books
+biographical_vs_nonbiog["non_biographical"] = 57100 - biographical_vs_nonbiog["non_biographical"]
+
+# json.dump(biographical_vs_nonbiog, biographical_vs_nonbiog_file, indent = 4)
+biographical_vs_nonbiog_file.write("Type,Num_books\n")
+biographical_vs_nonbiog_file.write("biographical," + str(biographical_vs_nonbiog["biographical"]) + "\n")
+biographical_vs_nonbiog_file.write("non_biographical," + str(biographical_vs_nonbiog["non_biographical"]) + "\n")
 
 biographical_vs_nonbiog_file.close()
