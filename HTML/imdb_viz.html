@@ -16,6 +16,14 @@
 	<article>
 		<h1>IMDB Data Visualization</h1>
 		<section>
+			<h2>Entry type</h2>
+			<div class="graphic">
+				<a href="../img/IMDB visualization/types_per_frequency.png">
+					<img src="../img/IMDB visualization/types_per_frequency.png" alt="Entry type">
+				</a>
+			</div>
+		</section>
+		<section>
 			<h2>Word frequency</h2>
 			<div class="word_frequency">
 				<a href="../img/IMDB visualization/word_frequency.png">
@@ -24,23 +32,33 @@
 			</div>
 		</section>
 		<section>
-			<h2>Most used words</h2>
-			<div class="most_words_imdb">
-				<!-- Esto probablemente sea un javascript -->
+			<h2>Titles per year</h2>
+			<div class="graphic">
+				<a href="../img/IMDB visualization/titles_per_year.png">
+					<img src="../img/IMDB visualization/titles_per_year.png" alt="Titles per year">
+				</a>
 			</div>
 		</section>
 		<section>
-			<h2>Books per language</h2>
-			<div class="num_books_language">
+			<h2>Title length</h2>
+			<div class="graphic">
+				<a href="../img/IMDB visualization/title_length.png">
+					<img src="../img/IMDB visualization/title_length.png" alt="Title length">
+				</a>
+			</div>
+		</section>
+		<section>
+			<h2>Movies per genre</h2>
+			<div class="genres_frequency">
 				<div class="chart-example" id="chart">
 					<svg></svg>
 				</div>
 
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.6.0/d3.min.js"></script>
-				<script src="../Javascript/gutenberg_num_books.js"></script>
+				<script src="../Javascript/imdb_genres.js"></script>
 
 				<script>
-					d3.csv('../Filtering/Gutenberg/books_per_language.csv', function (error, data) {
+					d3.csv('../Filtering/IMDB/genres_per_frequency.csv', function (error, data) {
 						if (error) {
 							console.error('Error getting or parsing the data.');
 							throw error;
@@ -51,14 +69,6 @@
 						d3.select('#chart').datum(data).call(chart);
 					});
 				</script>
-			</div>
-		</section>
-		<section>
-			<h2>Films' length</h2>
-			<div class="length">
-				<a href="../img/Gutenberg visualization/biographical.png">
-					<img src="../img/Gutenberg visualization/biographical.png" alt="Films' length">
-				</a>
 			</div>
 		</section>
 		<br>
