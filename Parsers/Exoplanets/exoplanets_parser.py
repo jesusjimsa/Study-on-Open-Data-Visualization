@@ -16,11 +16,11 @@ import json
 
 try:
 	exoplanets_file = open("../../Datasets/Exoplanets/planets.tsv", "r")
-	method_per_frequency_file = open("../../Filtering/Exoplanets/method_per_frequency.json", "w+")
-	system_size_file = open("../../Filtering/Exoplanets/system_size.json", "w+")
-	discover_facility_file = open("../../Filtering/Exoplanets/discover_facility.json", "w+")
-	ordered_distance_file = open("../../Filtering/Exoplanets/ordered_distance.json", "w+")
-	orbital_period_file = open("../../Filtering/Exoplanets/orbital_period.json", "w+")
+	method_per_frequency_file = open("../../Filtering/Exoplanets/method_per_frequency.csv", "w+")
+	system_size_file = open("../../Filtering/Exoplanets/system_size.csv", "w+")
+	discover_facility_file = open("../../Filtering/Exoplanets/discover_facility.csv", "w+")
+	ordered_distance_file = open("../../Filtering/Exoplanets/ordered_distance.csv", "w+")
+	orbital_period_file = open("../../Filtering/Exoplanets/orbital_period.csv", "w+")
 except IOError as e:
 	print "Could not open file -> ", e
 	sys.exit()
@@ -75,7 +75,12 @@ for elem in discmethods:
 for elem in pl_discmethod:
 	method_per_frequency[pl_discmethod[elem]] += 1
 
-json.dump(method_per_frequency, method_per_frequency_file, indent = 4)
+# json.dump(method_per_frequency, method_per_frequency_file, indent = 4)
+
+method_per_frequency_file.write("Method,Times\n")
+
+for key in method_per_frequency:
+	method_per_frequency_file.write(str(key) + "," + str(method_per_frequency[key]) + "\n")
 
 method_per_frequency_file.close()
 
@@ -88,7 +93,12 @@ for elem in pl_pnum:
 for elem in pl_pnum:
 	system_size[pl_pnum[elem]] += 1
 
-json.dump(system_size, system_size_file, indent = 4)
+# json.dump(system_size, system_size_file, indent = 4)
+
+system_size_file.write("Number of planets, System size\n")
+
+for key in system_size:
+	system_size_file.write(str(system_size[key]) + "," + str(key) + "\n")
 
 system_size_file.close()
 
@@ -96,9 +106,17 @@ system_size_file.close()
 discover_facility = dict()
 
 for elem in pl_facility:
-	discover_facility[elem] = pl_facility[elem]
+	discover_facility[pl_facility[elem]] = 0
 
-json.dump(discover_facility, discover_facility_file, indent = 4)
+for elem in pl_facility:
+	discover_facility[pl_facility[elem]] += 1
+
+# json.dump(discover_facility, discover_facility_file, indent = 4)
+
+discover_facility_file.write("Facility,Times\n")
+
+for key in discover_facility:
+	discover_facility_file.write(str(key) + "," + str(discover_facility[key]) + "\n")
 
 discover_facility_file.close()
 
@@ -106,22 +124,32 @@ discover_facility_file.close()
 ordered_distance = dict()
 transition = list()
 
-for elem in st_dist:
-	if st_dist[elem] != "":
-		transition.append([elem, float(st_dist[elem])])
-	else:
-		transition.append([elem, 9999999999999])
+# for elem in st_dist:
+# 	if st_dist[elem] != "":
+# 		transition.append([elem, float(st_dist[elem])])
+#	else:
+#		transition.append([elem, 9999999999999])
 
-transition.sort(lambda x, y: cmp(y[1], x[1]))
+# transition.sort(lambda x, y: cmp(y[1], x[1]))
 
-for i in range(0, len(transition)):
-	ordered_distance[transition[i][0]] = i + 1
+# for i in range(0, len(transition)):
+# 	ordered_distance[transition[i][0]] = i + 1
 
-json.dump(ordered_distance, ordered_distance_file, indent = 4)
+# json.dump(ordered_distance, ordered_distance_file, indent = 4)
+
+ordered_distance_file.write("Planet,Distance\n")
+
+for key in st_dist:
+	ordered_distance_file.write(str(key) + "," + str(st_dist[key]) + "\n")
 
 ordered_distance_file.close()
 
 ## Orbital period ##
-json.dump(pl_orbper, orbital_period_file, indent = 4)
+# json.dump(pl_orbper, orbital_period_file, indent = 4)
+
+orbital_period_file.write("Planet,Orbital period\n")
+
+for key in pl_orbper:
+	orbital_period_file.write(str(key) + "," + str(pl_orbper[key]) + "\n")
 
 orbital_period_file.close()
