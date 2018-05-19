@@ -8,4 +8,6 @@ Deliverables:
 - a public GitHub repository of the original source-code examples available under an open source license
 - a public Website providing the interactive demos for all data visualization solutions.  
 
-All Python scripts are writen to export data to csv files (mainly). You can change it to json by comenting the lines that use the function `write` and removing the comments that use the `json.dump...` function.
+All Python scripts are writen to export data to csv files (mainly). You can change it to json by comenting the lines that use the function `write` and removing the comments that use the `json.dump...` function.  
+
+[Data visualization](https://jesusjimsa.github.io/Study-on-Open-Data-Visualization/HTML/index.html)
