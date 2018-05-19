@@ -1,4 +1,4 @@
-Film,Genre
+Genre,Num_films
 Sci-Fi,26113
 Crime,39800
 Romance,52945
@@ -6,7 +6,6 @@ Animation,55143
 Music,64857
 Comedy,245418
 War,10599
-unknown,104451
 Horror,44293
 Film-Noir,406
 Western,10662

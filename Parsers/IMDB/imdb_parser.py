@@ -143,7 +143,7 @@ for elem in title_genres:
 
 # json.dump(genres_per_frequency, genres_per_frequency_file, indent = 4)
 
-genres_per_frequency_file.write("Film,Genre\n")
+genres_per_frequency_file.write("Genre,Num_films\n")
 
 for key in genres_per_frequency:
 	genres_per_frequency_file.write(str(key) + "," + str(genres_per_frequency[key]) + "\n")
