@@ -55,15 +55,7 @@ p{
 	padding-right: 10px;
 }
 
-.most_words img{
-	width: 100%;
-	max-width: 900px;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.books_per_author img{
+.graphic img{
 	width: 100%;
 	max-width: 900px;
 	display: block;
@@ -83,3 +75,12 @@ p{
 	text-align: center;
 	font-weight: normal;
 }
+
+.word_frequency img{
+	width: 100%;
+	max-width: 900px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
