@@ -11,7 +11,7 @@ body > section, article {
 }
 
 article {
-	padding: 0px 88px 490px 10%;
+	padding: 0px 10% 490px 10%;
 	background: #fff;
 	border-top: 5px solid transparent;
 	border-right: 28px solid transparent;
