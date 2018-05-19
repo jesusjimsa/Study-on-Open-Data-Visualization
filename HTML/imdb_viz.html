@@ -15,10 +15,56 @@
 <body>
 	<article>
 		<h1>IMDB Data Visualization</h1>
-		
+		<section>
+			<h2>Word frequency</h2>
+			<div class="word_frequency">
+				<a href="../img/IMDB visualization/word_frequency.png">
+					<img src="../img/IMDB visualization/word_frequency.png" alt="Word frequency">
+				</a>
+			</div>
+		</section>
+		<section>
+			<h2>Most used words</h2>
+			<div class="most_words_imdb">
+				<!-- Esto probablemente sea un javascript -->
+			</div>
+		</section>
+		<section>
+			<h2>Books per language</h2>
+			<div class="num_books_language">
+				<div class="chart-example" id="chart">
+					<svg></svg>
+				</div>
 
-		
-		<br><br><br><br>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.6.0/d3.min.js"></script>
+				<script src="../Javascript/gutenberg_num_books.js"></script>
+
+				<script>
+					d3.csv('../Filtering/Gutenberg/books_per_language.csv', function (error, data) {
+						if (error) {
+							console.error('Error getting or parsing the data.');
+							throw error;
+						}
+						// selection.datum() returns the bound datum for the first element in the selection and 
+						//  doesn't join the specified array of data with the selected elements
+						var chart = bubbleChart().width(500).height(500);
+						d3.select('#chart').datum(data).call(chart);
+					});
+				</script>
+			</div>
+		</section>
+		<section>
+			<h2>Films' length</h2>
+			<div class="length">
+				<a href="../img/Gutenberg visualization/biographical.png">
+					<img src="../img/Gutenberg visualization/biographical.png" alt="Films' length">
+				</a>
+			</div>
+		</section>
+		<br>
+		<br>
+		<br>
+		<br>
 		<div class="go_back">
 			<a href="index.html">
 				<h4>Go back</h4>
