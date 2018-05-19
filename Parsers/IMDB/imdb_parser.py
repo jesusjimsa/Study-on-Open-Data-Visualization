@@ -16,6 +16,8 @@ except IOError as e:
 	sys.exit()
 
 #### Parsing ####
+print "Parsing...\n"
+
 first_line = True
 titles = list()
 types = set()
@@ -69,17 +71,24 @@ for line in titles_basics_file:
 titles_basics_file.close()
 
 #### Filtering ####
+print "Filtering\n"
+
 ## Titles length ##
+print "Titles length\n"
+
 # json.dump(title_length, titles_per_length_file, indent = 4)
 
 titles_per_length_file.write("Title,Length (in minutes)\n")
 
 for key in title_length:
-	titles_per_length_file.write(str(key) + "," + str(title_length[key]) + "\n")
+	if title_length[key] != "":
+		titles_per_length_file.write(str(key) + "," + str(title_length[key]) + "\n")
 
 titles_per_length_file.close()
 
 ## Types per frequency ##
+print "Types per frequency\n"
+
 types_per_frequency = dict()
 
 for elem in types:
@@ -98,26 +107,31 @@ for key in types_per_frequency:
 types_per_frequency_file.close()
 
 ## Words per frequency ##
+print "Words per frequency\n"
+
 words_per_frequency = dict()
 
 for single_title in titles:
 	for word in single_title.split():
-		words_per_frequency[word] = 0
+		words_per_frequency[word.lower()] = 0
 
 for single_title in titles:
 	for word in single_title.split():
-		words_per_frequency[word] += 1
+		words_per_frequency[word.lower()] += 1
 
 # json.dump(words_per_frequency, words_per_frequency_file, indent = 4)
 
 words_per_frequency_file.write("Word,Num_ocurrences\n")
 
 for key in words_per_frequency:
-	words_per_frequency_file.write(str(key) + "," + str(words_per_frequency[key]) + "\n")
+	if words_per_frequency[key] > 4000:
+		words_per_frequency_file.write(str(key) + "," + str(words_per_frequency[key]) + "\n")
 
 words_per_frequency_file.close()
 
 ## Genres per frequency ##
+print "Genres per frequency\n"
+
 genres_per_frequency = dict()
 
 for elem in genres:
@@ -137,15 +151,19 @@ for key in genres_per_frequency:
 genres_per_frequency_file.close()
 
 ## Titles year ##
+print "Titles year\n"
+
 titles_per_year = dict()
 
 for elem in years:
-	titles_per_year[elem] = 0
+	if elem != "\\N":
+		titles_per_year[elem] = 0
 
 titles_per_year["unknown"] = 0
 
 for elem in title_year:
-	titles_per_year[title_year[elem]] += 1
+	if elem != "\\N":
+		titles_per_year[title_year[elem]] += 1
 
 # json.dump(titles_per_year, titles_per_year_file, indent = 4)
 
