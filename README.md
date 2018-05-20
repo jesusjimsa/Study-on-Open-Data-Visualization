@@ -11,3 +11,4 @@ Deliverables:
 All Python scripts are writen to export data to csv files (mainly). You can change it to json by comenting the lines that use the function `write` and removing the comments that use the `json.dump...` function.  
 
 - [Data visualization](https://jesusjimsa.github.io/Study-on-Open-Data-Visualization/HTML/index.html)
+- [Scholarly documentation](https://jesusjimsa.github.io/Study-on-Open-Data-Visualization/HTML/scholarly.html)
