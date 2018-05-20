@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Study on Open Data Visualisation</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="../CSS/style.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<article typeof="schema:ScholarlyArticle">
+		<h1>Study on Open Data Visualisation</h1>
+		<div class="contact">
+			<section typeof="sa:AuthorsList">
+				<h2>Author</h2>
+				<div class="jesusjimsa" property="schema:author" typeof="sa:ContributorRole">
+					<a property="schema:author" href="http://github.com/jesusjimsa" typeof="schema:Person">
+						<span property="schema:givenName">Jesús</span>
+						<span property="schema:familyName">Jiménez Sánchez</span>
+					</a>
+					-
+					<span property="sa:roleContactPoint" typeof="schema:ContactPoint">
+						<a property="schema:email" href="mailto:jesusjimsa@icloud.com" title="corresponding author">Email</a>
+					</span>
+				</div>
+			</section>
+		</div>
+		<section typeof="sa:Abstract">
+			<h2>Introduction</h2>
+			<p>
+				This project considers three public datasets, obtained from
+				<a href="https://github.com/awesomedata/awesome-public-datasets">https://github.com/awesomedata/awesome-public-datasets</a>. Using these sets, analysing its content, I have created five
+				(four for one of them) different graphics of their different information. The public datasets used in the project are
+				the next ones:
+
+
+			</p>
+			<ul>
+				<li>
+					Gutenberg eBooks List:
+					<a href="http://www.gutenberg.org/wiki/Gutenberg:Offline_Catalogs">http://www.gutenberg.org/wiki/Gutenberg:Offline_Catalogs</a>
+				</li>
+				<li>
+					IMDb Database:
+					<a href="http://www.imdb.com/interfaces">http://www.imdb.com/interfaces</a>
+				</li>
+				<li>
+					NASA Exoplanet Archive:
+					<a href="http://exoplanetarchive.ipac.caltech.edu/">http://exoplanetarchive.ipac.caltech.edu/</a>
+				</li>
+			</ul>
+		</section>
+		<section typeof="sa:Gutenberg">
+			<h3>Gutenberg eBooks List</h3>
+			<p>
+				The Gutenberg eBooks List is a list of all the books added to its database of free books until now. It has 57100 entries
+				and looks like this:
+			</p>
+			<script src="https://gist.github.com/jesusjimsa/c89a3200b4f0d304555ad6839ef62684.js"></script>
+			<p>
+				As we can see, the information it gives is:
+			</p>
+			<ul>
+				<li>Title of the book</li>
+				<li>Name of the author</li>
+				<li>Language (if it’s not English)</li>
+				<li>The order in which every book was added to the list</li>
+				<li>Some extra information like subtitle, illustrator, composer…</li>
+			</ul>
+			<p>
+				This information is parsed from the text file using a script written in Python. The parser looks like this:
+			</p>
+			<script src="https://gist.github.com/jesusjimsa/2e619beabb30036bb5df4858ee6da6e0.js"></script>
+			<p>
+				After parsing and filtering all the information, it is written in csv files to be processed by the programs or algorithms
+				that created the graphics.
+			</p>
+			<p>
+				These csv files look like this:
+			</p>
+			<script src="https://gist.github.com/jesusjimsa/7ce062720f0a613bb5f977594da7e57f.js"></script>
+			<script src="https://gist.github.com/jesusjimsa/cf0bcd37a3f2f0994c17795ff6995864.js"></script>
+			<p>
+				These csv files were used in a series of programs, being
+				<a href="https://d3js.org">d3js</a>
+				(a Javascript library) for displaying the number of books per language and
+				<a href="https://www.apple.com/numbers/">Apple iWork Numbers</a>
+				for the rest of graphics.
+			</p>
+			<p>
+				These are the obtained graphics:
+			</p>
+			<div class="doc_graphics">
+				<figure typeof="sa:image">
+					<img src="https://i.imgur.com/bnpMHZi.png" alt="Books per language">
+				</figure>
+				<figure typeof="sa:image">
+					<img src="../img/Gutenberg visualization/biographical.png" alt="Biographical vs non-biographical">
+				</figure>
+				<figure typeof="sa:image">
+					<img src="../img/Gutenberg visualization/books_per_author.png" alt="Books per author">
+				</figure>
+				<figure typeof="sa:image">
+					<img src="../img/Gutenberg visualization/words_per_frequency.png" alt="Words per frequency">
+				</figure>
+			</div>
+		</section>
+		<section typeof="sa:IMDB">
+			<h3>IMDb Database</h3>
+			<p>
+				The IMDb Database is a list of all the movies, shorts, TV series, TV movies, TV shorts, TV mini series, videos and video
+				games added to their database until now. It has 4990866 entries and looks like this:
+			</p>
+			<script src="https://gist.github.com/jesusjimsa/e597bed1dc105415fcc8a4c3064c0988.js"></script>
+			<p>
+				As we can see, the information it gives is:
+			</p>
+			<ul>
+				<li>Code identifier</li>
+				<li>Title</li>
+				<li>Check if it’s an adult title</li>
+				<li>Start and end year</li>
+				<li>Length</li>
+				<li>Genre</li>
+			</ul>
+			<p>
+				This information is parsed from the text file using a script written in Python. The parser looks like this:
+			</p>
+			<script src="https://gist.github.com/jesusjimsa/5025d5a0bda5cdde2829057292e5c14a.js"></script>
+			<p>
+				After parsing and filtering all the information, it is written in csv files to be processed by the programs or algorithms
+				that created the graphics.
+			</p>
+			<p>
+				These csv files look like this:
+			</p>
+			<script src="https://gist.github.com/jesusjimsa/35c036f3e5a5b522b9be18994fddcf83.js"></script>
+			<script src="https://gist.github.com/jesusjimsa/40c5b72036b127d4910758246c195442.js"></script>
+			<p>
+				These csv files were used in a series of programs, being
+				<a href="https://d3js.org">d3js</a>
+				(a Javascript library) for displaying the number of movies per genre, Infogram to make the most used words word cloud and
+				<a href="https://www.apple.com/numbers/">Apple iWork Numbers</a>
+				for the rest of graphics.
+			</p>
+			<p>
+				These are the obtained graphics:
+			</p>
+			<div class="doc_graphics">
+				<figure typeof="sa:image">
+					<img src="https://i.imgur.com/4nqHfXx.png" alt="Films per genre">
+				</figure>
+				<figure typeof="sa:image">
+					<img src="../img/IMDB visualization/title_length.png" alt="Titles' length">
+				</figure>
+				<figure typeof="sa:image">
+					<img src="../img/IMDB visualization/titles_per_year.png" alt="Titles per year">
+				</figure>
+				<figure typeof="sa:image">
+					<img src="../img/IMDB visualization/types_per_frequency.png" alt="Types per frequency">
+				</figure>
+				<figure typeof="sa:image">
+					<img src="../img/IMDB visualization/word_frequency.png" alt="Most used words">
+				</figure>
+			</div>
+		</section>
+		<section typeof="sa:Exoplanets">
+			<h3>NASA Exoplanet Archive</h3>
+			<p>
+				The NASA Exoplanet Archive is a list of all the discovered until now. It has 3725 entries and looks like this:
+			</p>
+			<script src="https://gist.github.com/jesusjimsa/e449660e872d9c626042f3172766cbba.js"></script>
+			<p>
+				As we can see, the information it gives is:
+			</p>
+			<ul>
+				<li>Discovery method</li>
+				<li>Number of planets in the system</li>
+				<li>Time it takes to orbit around its star (in days)</li>
+				<li>Distance</li>
+				<li>Name</li>
+				<li>Discovery facility</li>
+			</ul>
+			<p>
+				This information is parsed from the text file using a script written in Python. The parser looks like this:
+			</p>
+			<script src="https://gist.github.com/jesusjimsa/f7170dc79562b6b70c9e2800a8510b5c.js"></script>
+			<p>
+				After parsing and filtering all the information, it is written in csv files to be processed by the programs or algorithms
+				that created the graphics.
+			</p>
+			<p>
+				These csv files look like this:
+			</p>
+			<script src="https://gist.github.com/jesusjimsa/c7764a87011724d87dfa9398768ac6a8.js"></script>
+			<script src="https://gist.github.com/jesusjimsa/6d97a7ce6a75c4b3d7e1b4efbb4fe1a2.js"></script>
+			<p>
+				These csv files were used in a series of programs, being
+				<a href="draw.io">draw.io</a>
+				for displaying the number of planets in the system and
+				<a href="https://www.apple.com/numbers/">Apple iWork Numbers</a>
+				for the rest of graphics.
+			</p>
+			<p>
+				These are the obtained graphics:
+			</p>
+			<div class="doc_graphics">
+				<figure typeof="sa:image">
+					<img src="../img/Exoplanets visualization/discover_facility.png" alt="Discovery facility">
+				</figure>
+				<figure typeof="sa:image">
+					<img src="../img/Exoplanets visualization/method_per_frequency.png" alt="Method per frequency">
+				</figure>
+				<figure typeof="sa:image">
+					<img src="../img//Exoplanets visualization/orbital_period.png" alt="Orbital period">
+				</figure>
+				<figure typeof="sa:image">
+					<img src="../img/Exoplanets visualization/ordered_distance.png" alt="Distance">
+				</figure>
+				<figure typeof="sa:image">
+					<img src="../img/Exoplanets visualization/system_size.png" alt="System size">
+				</figure>
+			</div>
+		</section>
+		<br>
+		<br>
+		<br>
+		<br>
+		<div class="go_back">
+			<a href="https://github.com/jesusjimsa/Study-on-Open-Data-Visualization">
+				<h4>Go back to the repository</h4>
+			</a>
+		</div>
+	</article>
+</body>
+
+</html>

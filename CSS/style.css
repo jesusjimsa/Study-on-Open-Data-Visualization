@@ -40,8 +40,21 @@ h4{
 	font-size: 1.56vw;
 }
 
-p{
+p, li, ul{
 	font-size: 0.88vw;
+}
+
+p a{
+	font-size: 0.88vw;
+}
+
+ul a{
+	font-size: 0.88vw;
+}
+
+.contact .jesusjimsa{
+	margin-right: 500px;
+	margin-top: 16px;
 }
 
 .logos img{
@@ -84,3 +97,11 @@ p{
 	margin-right: auto;
 }
 
+.doc_graphics img{
+	width: 50%;
+	max-width: 900px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	/* float: left; */
+}
